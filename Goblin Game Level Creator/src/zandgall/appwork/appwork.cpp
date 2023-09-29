@@ -6,6 +6,7 @@
 using namespace std;
 using namespace app;
 
+
 std::map<GLFWwindow*, window*> app::win_ref = std::map<GLFWwindow*, window*>();
 window* app::current_window = nullptr, * app::base_window = nullptr;
 map<string, tuple<unsigned int, unsigned int, GLenum, GLboolean, GLsizei, vector<unsigned int>>> app::vao_definitions = map<string, tuple<unsigned int, unsigned int, GLenum, GLboolean, GLsizei, vector<unsigned int>>>();

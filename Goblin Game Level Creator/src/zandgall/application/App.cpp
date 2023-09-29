@@ -21,7 +21,7 @@ app::button* width_inc, * width_dec, *height_inc, *height_dec, *layer_inc, *laye
 app::text* width_display, * height_display, *layer_display, *type_display;
 int world_width, world_height;
 
-app::button* object_mode;
+app::button* object_mode, *tile_mode, *info_mode;
 
 #define MAX_TYPES 2
 std::string object_types[] = {"Decoration", "Worm"};
@@ -279,6 +279,7 @@ App::App() {
 	_addGLShader("canvas", loadShader("res/shaders/canvas.shader"));
 
 	palette = app::create_window("Palette", 720, 720);
+	palette->clear_color = glm::vec4(0.7, 0.7, 0.9, 1);
 	the = app::create_window("Window");
 	the->clear_color = glm::vec4(0.7, 0.7, 0.9, 1);
 	tile_add_new = new app::button(0, 40, 64, 64);
@@ -379,13 +380,14 @@ App::App() {
 	the->addComponent(packer);
 
 
-	object_mode = new app::button(the->width - 100, the->height - 36, 100, 36, true);
+	object_mode = new app::button(10, 10, 100, 36, true);
 	object_mode->addChild(new app::text(0, 0, glm::vec4(0, 0, 0, 1), "OBJ Mode"));
-	((app::text*)object_mode->children[0])->fitParent();
+	((app::text*)object_mode->children[0])->fitParent(glm::vec4(3));
 	object_mode->on_toggled_on.push_back(&object_mode_toggle_on);
 	object_mode->on_toggled_off.push_back(&object_mode_toggle_off);
 	object_mode->setDefaultStyle();
-	the->addComponent(object_mode);
+	object_mode->height = 72;
+	palette->addComponent(object_mode);
 
 }
 

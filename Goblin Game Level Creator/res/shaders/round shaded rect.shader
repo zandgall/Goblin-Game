@@ -3,9 +3,9 @@
 
 layout(location = 0) in vec3 aPos;
 
-varying vec3 pos;
-varying vec2 uv;
-varying vec2 transform_size;
+out vec3 pos;
+out vec2 uv;
+out vec2 transform_size;
 
 uniform mat4 screenspace, transform;
 
@@ -20,9 +20,9 @@ void main() {
 #shader fragment
 #version 460 core
 
-varying vec3 pos;
-varying vec2 uv;
-varying vec2 transform_size;
+in vec3 pos;
+in vec2 uv;
+in vec2 transform_size;
 
 uniform vec4 col;
 uniform sampler2D tex;
